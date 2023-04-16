@@ -42,7 +42,6 @@ class LoginViewController: UIViewController {
                 return
             }
             let userID = authResult.user.uid
-            print(userID)
             let db = Firestore.firestore()
             let usersRef = db.collection("users")
             let query = usersRef.whereField("userID", isEqualTo: userID)
@@ -61,6 +60,11 @@ class LoginViewController: UIViewController {
                     // Retrieve the name and isHost fields from the user document
                     let name = userData["name"] as? String
                     let isHost = userData["isHost"] as? Bool
+                    if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+                        appDelegate.user?.name = name ?? ""
+                        appDelegate.user?.userID = userID
+                        appDelegate.user?.userName = userNameText
+                    }
                     host=isHost ?? false
                     if(host){
                                 self.performSegue(withIdentifier: "goToHost1", sender: self)

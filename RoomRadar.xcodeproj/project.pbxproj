@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7E2BB28A29E91A19006EBB4F /* RoomDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2BB28929E91A19006EBB4F /* RoomDetails.swift */; };
+		7E2BB28D29EA133C006EBB4F /* RoomListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2BB28C29EA133C006EBB4F /* RoomListViewController.swift */; };
+		7E2BB28F29EA13AD006EBB4F /* PostViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2BB28E29EA13AD006EBB4F /* PostViewCell.swift */; };
+		7E2BB29129EA406D006EBB4F /* HostProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2BB29029EA406D006EBB4F /* HostProfileViewController.swift */; };
 		7E31368029DDC0D20001870A /* KeyboardLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E31367F29DDC0D20001870A /* KeyboardLayoutConstraint.swift */; };
 		7E3735EF29DD272800A11298 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3735EE29DD272800A11298 /* AppDelegate.swift */; };
 		7E3735F129DD272800A11298 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3735F029DD272800A11298 /* SceneDelegate.swift */; };
@@ -25,9 +29,15 @@
 		7ED6E43729E8952D00C78881 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 7ED6E43629E8952D00C78881 /* FirebaseFirestore */; };
 		7ED6E43929E8952D00C78881 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7ED6E43829E8952D00C78881 /* FirebaseFirestoreSwift */; };
 		7ED6E43B29E8952D00C78881 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 7ED6E43A29E8952D00C78881 /* FirebaseStorage */; };
+		7EEA092229EB5ED6000866A6 /* AddRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EEA092129EB5ED6000866A6 /* AddRoomViewController.swift */; };
+		7EEA092529EB95D4000866A6 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 7EEA092429EB95D4000866A6 /* Kingfisher */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7E2BB28929E91A19006EBB4F /* RoomDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomDetails.swift; sourceTree = "<group>"; };
+		7E2BB28C29EA133C006EBB4F /* RoomListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomListViewController.swift; sourceTree = "<group>"; };
+		7E2BB28E29EA13AD006EBB4F /* PostViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewCell.swift; sourceTree = "<group>"; };
+		7E2BB29029EA406D006EBB4F /* HostProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostProfileViewController.swift; sourceTree = "<group>"; };
 		7E31367F29DDC0D20001870A /* KeyboardLayoutConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardLayoutConstraint.swift; sourceTree = "<group>"; };
 		7E3735EB29DD272800A11298 /* RoomRadar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoomRadar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E3735EE29DD272800A11298 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -42,6 +52,7 @@
 		7ED6E42A29E8908600C78881 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		7ED6E42D29E8921500C78881 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		7ED6E42F29E8923700C78881 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		7EEA092129EB5ED6000866A6 /* AddRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRoomViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +62,7 @@
 			files = (
 				7ED6E43929E8952D00C78881 /* FirebaseFirestoreSwift in Frameworks */,
 				7ED6E43529E8952D00C78881 /* FirebaseDatabase in Frameworks */,
+				7EEA092529EB95D4000866A6 /* Kingfisher in Frameworks */,
 				7ED6E43729E8952D00C78881 /* FirebaseFirestore in Frameworks */,
 				7E993AC429DFD7C60063D787 /* IQKeyboardManagerSwift in Frameworks */,
 				7ED6E43329E8952D00C78881 /* FirebaseAuth in Frameworks */,
@@ -61,6 +73,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7E2BB28729E919BA006EBB4F /* Rooms */ = {
+			isa = PBXGroup;
+			children = (
+				7E2BB28B29EA1324006EBB4F /* ViewController */,
+				7E2BB28829E919E6006EBB4F /* Models */,
+			);
+			path = Rooms;
+			sourceTree = "<group>";
+		};
+		7E2BB28829E919E6006EBB4F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7E2BB28929E91A19006EBB4F /* RoomDetails.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		7E2BB28B29EA1324006EBB4F /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7E2BB28C29EA133C006EBB4F /* RoomListViewController.swift */,
+				7E2BB28E29EA13AD006EBB4F /* PostViewCell.swift */,
+				7EEA092129EB5ED6000866A6 /* AddRoomViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		7E3735E229DD272800A11298 = {
 			isa = PBXGroup;
 			children = (
@@ -80,6 +119,7 @@
 		7E3735ED29DD272800A11298 /* RoomRadar */ = {
 			isa = PBXGroup;
 			children = (
+				7E2BB28729E919BA006EBB4F /* Rooms */,
 				7ED6E42829E8905500C78881 /* Users */,
 				7ED6E42129E7C57B00C78881 /* GoogleService-Info.plist */,
 				7E31367F29DDC0D20001870A /* KeyboardLayoutConstraint.swift */,
@@ -117,6 +157,7 @@
 			children = (
 				7ED6E42D29E8921500C78881 /* SignUpViewController.swift */,
 				7ED6E42F29E8923700C78881 /* LoginViewController.swift */,
+				7E2BB29029EA406D006EBB4F /* HostProfileViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -144,6 +185,7 @@
 				7ED6E43629E8952D00C78881 /* FirebaseFirestore */,
 				7ED6E43829E8952D00C78881 /* FirebaseFirestoreSwift */,
 				7ED6E43A29E8952D00C78881 /* FirebaseStorage */,
+				7EEA092429EB95D4000866A6 /* Kingfisher */,
 			);
 			productName = RoomRadar;
 			productReference = 7E3735EB29DD272800A11298 /* RoomRadar.app */;
@@ -176,6 +218,7 @@
 			packageReferences = (
 				7E993AC229DFD7C60063D787 /* XCRemoteSwiftPackageReference "IQKeyboardManager" */,
 				7ED6E43129E8952D00C78881 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				7EEA092329EB95D4000866A6 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 7E3735EC29DD272800A11298 /* Products */;
 			projectDirPath = "";
@@ -208,9 +251,14 @@
 				7E3735F329DD272800A11298 /* ViewController.swift in Sources */,
 				7E3735F929DD272800A11298 /* RoomRadar.xcdatamodeld in Sources */,
 				7ED6E42B29E8908600C78881 /* User.swift in Sources */,
+				7E2BB28F29EA13AD006EBB4F /* PostViewCell.swift in Sources */,
 				7E3735EF29DD272800A11298 /* AppDelegate.swift in Sources */,
 				7ED6E43029E8923700C78881 /* LoginViewController.swift in Sources */,
+				7E2BB28A29E91A19006EBB4F /* RoomDetails.swift in Sources */,
 				7ED6E42E29E8921500C78881 /* SignUpViewController.swift in Sources */,
+				7EEA092229EB5ED6000866A6 /* AddRoomViewController.swift in Sources */,
+				7E2BB29129EA406D006EBB4F /* HostProfileViewController.swift in Sources */,
+				7E2BB28D29EA133C006EBB4F /* RoomListViewController.swift in Sources */,
 				7E31368029DDC0D20001870A /* KeyboardLayoutConstraint.swift in Sources */,
 				7E3735F129DD272800A11298 /* SceneDelegate.swift in Sources */,
 			);
@@ -448,6 +496,14 @@
 				minimumVersion = 10.0.0;
 			};
 		};
+		7EEA092329EB95D4000866A6 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -480,6 +536,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 7ED6E43129E8952D00C78881 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		7EEA092429EB95D4000866A6 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7EEA092329EB95D4000866A6 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 

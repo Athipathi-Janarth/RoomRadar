@@ -52,6 +52,11 @@ class SignUpViewController: UIViewController {
             let userID = authResult.user.uid
             let db=Firestore.firestore()
             let usersRef = db.collection("users").addDocument(data: ["userID" : userID,"name":fullNameText,"isHost":isHost])
+            if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+                appDelegate.user?.name = fullNameText
+                appDelegate.user?.userID = userID
+                appDelegate.user?.userName = userNameText
+            }
             self.clearFields()
             if(isHost){
                 self.performSegue(withIdentifier: "goToHost", sender: self)
