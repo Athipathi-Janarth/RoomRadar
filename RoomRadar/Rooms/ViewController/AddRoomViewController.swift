@@ -122,12 +122,12 @@ class AddRoomViewController: UIViewController,UIImagePickerControllerDelegate & 
 
                 let imageURLString = downloadURL.absoluteString
                 if let isTemporary = self.isTemporary{
-                    if self.isTemporary.isOn{
+                    if isTemporary.isOn{
                         self.isTemp=true
                     }
                 }
                 if let isAvailable = self.isAvailable{
-                    if self.isAvailable.isOn{
+                    if isAvailable.isOn{
                         self.isAvail=true
                     }
                 }
@@ -169,12 +169,13 @@ class AddRoomViewController: UIViewController,UIImagePickerControllerDelegate & 
                         print("Error adding document: \(error)")
                     } else {
                         print("Document added successfully!")
+                        self.clearFields()
+                        self.navigationController?.popViewController(animated: true)
                     }
                 }
 
             }
         }
-        clearFields()
     }
     func clearFields() {
         Address.text = ""

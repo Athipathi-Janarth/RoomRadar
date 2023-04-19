@@ -14,6 +14,7 @@ class RoomListViewController: UIViewController,UITableViewDataSource,UITableView
     var roomList = RoomList()
     var user:User?
     let storageRef = Storage.storage().reference()
+    let db = Firestore.firestore()
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +28,6 @@ class RoomListViewController: UIViewController,UITableViewDataSource,UITableView
         // Do any additional setup after loading the view.
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        //print( roomList?.getRooms().count ?? 0)
         return roomList.getRooms().count
     }
     
@@ -42,13 +42,35 @@ class RoomListViewController: UIViewController,UITableViewDataSource,UITableView
         cell.AccomodationType.text=(roomList.getRooms()[indexPath.row].isTemporary) ? "Temporary" : "Permanent"
         cell.SpotType.text=roomList.getRooms()[indexPath.row].spot
         cell.Rating.text="\(roomList.getRooms()[indexPath.row].rating)"
-        cell.address.text="$\(String(describing: roomList.getRooms()[indexPath.row].address))/Day"
+        cell.Rent.text="\(String(describing: roomList.getRooms()[indexPath.row].Rent))/Day"
         return cell
     }
-    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+           if editingStyle == .delete {
+               // Remove the item from the data source
+               let documentID = roomList.getRooms()[indexPath.row].accomodationID
+               let documentRef = self.db.collection("rooms").document(documentID)
+               documentRef.delete() { error in
+                   if let error = error {
+                       print("Error deleting document: \(error)")
+                       self.showAlert(message: "Could not delete post. Please try again later.")
+                   } else {
+                       print("Document deleted successfully")
+                       // Show success message or navigate to a different view controller
+                   }
+               }
+               getRooms()
+               tableView.deleteRows(at: [indexPath], with: .fade)
+           }
+       }
+    func showAlert(message: String, title:String = "Error") {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion: nil)
+    }
     func getRooms() {
         roomList = RoomList()
-        let db = Firestore.firestore()
         let collectionRef = db.collection("rooms")
         let query = collectionRef.whereField("userID", isEqualTo: user?.userID ?? "")
         query.getDocuments{(querySnapshot, error) in
@@ -79,7 +101,7 @@ class RoomListViewController: UIViewController,UITableViewDataSource,UITableView
                 let description = data["description"] as? String ?? ""
                 let room_Image = data["room_Image"] as? String ?? ""
                 let rating = data["rating"] as? Int ?? 0
-                let isTemporary = data["isTemporary"] as? Bool ?? false
+                let isTemporary = data["type"] as? Bool ?? false
                 
                 let room = RoomDetails(accomodationID: accommodationID,
                                        userID: "",
@@ -110,6 +132,14 @@ class RoomListViewController: UIViewController,UITableViewDataSource,UITableView
              }
              */
             self.tableView.reloadData()
+        }
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "updatePost", sender: self)
+    }
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination =  segue.destination as? UpdateRoomViewController{
+            destination.accommodation = roomList.getRooms()[tableView.indexPathForSelectedRow?.row ?? 0]
         }
     }
     override func viewWillAppear(_ animated: Bool) {
