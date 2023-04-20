@@ -18,8 +18,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="background-img" translatesAutoresizingMaskIntoConstraints="NO" id="uuo-Xt-Naw">
-                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background-img" translatesAutoresizingMaskIntoConstraints="NO" id="uuo-Xt-Naw">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="796"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalCentering" alignment="center" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="ZrS-QO-TfI">
                                 <rect key="frame" x="71.666666666666686" y="273" width="250" height="250"/>
@@ -865,7 +865,7 @@
                                 <buttonConfiguration key="configuration" style="plain" image="plus" catalog="system"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Welcome User" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L1S-SN-BG8">
-                                <rect key="frame" x="76" y="68" width="264" height="30"/>
+                                <rect key="frame" x="76" y="483" width="264" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -881,6 +881,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="BGb-so-Jh5"/>
                     <connections>
+                        <outlet property="WelcomeLabel" destination="L1S-SN-BG8" id="1rE-u3-LwW"/>
                         <segue destination="BYZ-38-t0r" kind="presentation" identifier="goToLogin" modalPresentationStyle="fullScreen" id="eoL-cf-gxV"/>
                     </connections>
                 </viewController>
@@ -1310,14 +1311,6 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="AccomodationType" destination="J0a-I1-RWa" id="Sb1-Hg-4IR"/>
-                                            <outlet property="Rent" destination="4lZ-tp-hgf" id="8ZN-Qs-AJo"/>
-                                            <outlet property="RoomImage" destination="z9g-6L-r96" id="VOz-iS-aSJ"/>
-                                            <outlet property="Rooms" destination="cNO-IQ-4Wu" id="wuF-av-1Az"/>
-                                            <outlet property="Vacant" destination="SPi-8m-Uon" id="l5O-xA-TaG"/>
-                                            <outlet property="address" destination="rwN-i3-WXO" id="A1w-J0-pLe"/>
-                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -1366,7 +1359,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="tx3-zq-i0S"/>
         <segue reference="vvN-4r-YHj"/>
-        <segue reference="rTH-H0-nNl"/>
+        <segue reference="eoL-cf-gxV"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="background-img" width="393" height="852"/>

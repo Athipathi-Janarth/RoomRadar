@@ -8,16 +8,19 @@
 import UIKit
 
 class HostProfileViewController: UIViewController {
-
+    
+    
+    var user:User?
+    var appDelegate = UIApplication.shared.delegate as? AppDelegate
+    @IBOutlet weak var WelcomeLabel: UILabel!
     @IBAction func LogOut(_ sender: UIButton) {
-        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
-            appDelegate.user? = User(userID: "", name: "", userName: "", isHost:false)
-        }
+        self.appDelegate?.user? = User(userID: "", name: "", userName: "", isHost:false)
         self.performSegue(withIdentifier: "goToLogin", sender: self)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        self.user = self.appDelegate?.user
+        WelcomeLabel.text="Welcome " + (self.user?.name ?? "user");
         // Do any additional setup after loading the view.
     }
     
