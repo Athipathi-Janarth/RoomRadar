@@ -20,8 +20,10 @@ class AddRoomViewController: UIViewController,UIImagePickerControllerDelegate & 
         super.viewDidLoad()
         imagePicker.delegate = self
         imagePicker.sourceType = .savedPhotosAlbum
-        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
-            user = appDelegate.user
+        let decoder = JSONDecoder()
+        if let savedData = UserDefaults.standard.object(forKey: "userSession") as? Data,
+           let loadedSession = try? decoder.decode(User.self, from: savedData) {
+            self.user=loadedSession
         }
     }
     @IBOutlet weak var Address: UITextField!

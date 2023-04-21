@@ -6,7 +6,7 @@
 //
 
 import Foundation
-class User{
+class User:Codable{
     var userID: String
     var name: String
     var userName: String

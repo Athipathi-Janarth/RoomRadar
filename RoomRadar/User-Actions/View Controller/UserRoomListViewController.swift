@@ -1,16 +1,16 @@
 //
-//  RoomListViewController.swift
+//  UserRoomListViewController.swift
 //  RoomRadar
 //
-//  Created by AthiPathi on 4/14/23.
+//  Created by AthiPathi on 4/20/23.
 //
 
 import UIKit
 import FirebaseFirestore
 import FirebaseStorage
-import Kingfisher
 
-class RoomListViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
+class UserRoomListViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
+
     var roomList = RoomList()
     var user:User?
     let storageRef = Storage.storage().reference()
@@ -20,7 +20,7 @@ class RoomListViewController: UIViewController,UITableViewDataSource,UITableView
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        tableView.rowHeight = 200.0
+        tableView.rowHeight = 250.0
         let decoder = JSONDecoder()
         if let savedData = UserDefaults.standard.object(forKey: "userSession") as? Data,
            let loadedSession = try? decoder.decode(User.self, from: savedData) {
@@ -34,7 +34,7 @@ class RoomListViewController: UIViewController,UITableViewDataSource,UITableView
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as! PostViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "PostViewCell", for: indexPath) as! UserPostViewCell
         let imageUrl = URL(string: roomList.getRooms()[indexPath.row].room_Image)
         let placeholderImage = UIImage(named: "launch-screen")
         cell.RoomImage.kf.setImage(with: imageUrl, placeholder: placeholderImage)
@@ -44,27 +44,11 @@ class RoomListViewController: UIViewController,UITableViewDataSource,UITableView
         cell.AccomodationType.text=(roomList.getRooms()[indexPath.row].isTemporary) ? "Temporary" : "Permanent"
         cell.SpotType.text=roomList.getRooms()[indexPath.row].spot
         cell.Rating.text="\(roomList.getRooms()[indexPath.row].rating)"
+        cell.StartDates.text="Start: \(roomList.getRooms()[indexPath.row].startDate)"
+        cell.EndDates.text="End: \(roomList.getRooms()[indexPath.row].endDate)"
         cell.Rent.text="$\(String(describing: roomList.getRooms()[indexPath.row].Rent))/Day"
         return cell
     }
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-           if editingStyle == .delete {
-               // Remove the item from the data source
-               let documentID = roomList.getRooms()[indexPath.row].accomodationID
-               let documentRef = self.db.collection("rooms").document(documentID)
-               documentRef.delete() { error in
-                   if let error = error {
-                       print("Error deleting document: \(error)")
-                       self.showAlert(message: "Could not delete post. Please try again later.")
-                   } else {
-                       print("Document deleted successfully")
-                       // Show success message or navigate to a different view controller
-                   }
-               }
-               getRooms()
-               tableView.deleteRows(at: [indexPath], with: .fade)
-           }
-       }
     func showAlert(message: String, title:String = "Error") {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
@@ -74,7 +58,7 @@ class RoomListViewController: UIViewController,UITableViewDataSource,UITableView
     func getRooms() {
         roomList = RoomList()
         let collectionRef = db.collection("rooms")
-        let query = collectionRef.whereField("userID", isEqualTo: user?.userID ?? "")
+        let query = collectionRef.whereField("available", isEqualTo: true)
         query.getDocuments{(querySnapshot, error) in
             if let error = error {
                 print("Error retrieving documents: \(error.localizedDescription)")
@@ -124,24 +108,7 @@ class RoomListViewController: UIViewController,UITableViewDataSource,UITableView
                 
                 self.roomList.add(room: room)
             }
-            /*
-             // MARK: - Navigation
-             
-             // In a storyboard-based application, you will often want to do a little preparation before navigation
-             override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-             // Get the new view controller using segue.destination.
-             // Pass the selected object to the new view controller.
-             }
-             */
             self.tableView.reloadData()
-        }
-    }
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "updatePost", sender: self)
-    }
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destination =  segue.destination as? UpdateRoomViewController{
-            destination.accommodation = roomList.getRooms()[tableView.indexPathForSelectedRow?.row ?? 0]
         }
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -149,4 +116,23 @@ class RoomListViewController: UIViewController,UITableViewDataSource,UITableView
         getRooms()
         tableView.reloadData()
     }
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        performSegue(withIdentifier: "reviews", sender: self)
+//    }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if let destination =  segue.destination as? ReviewViewController{
+////            destination.accommodation = roomList.getRooms()[tableView.indexPathForSelectedRow?.row ?? 0]
+//        }
+//    }
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+    }
+    */
+
 }

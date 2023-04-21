@@ -1,20 +1,19 @@
 //
-//  HostProfileViewController.swift
+//  UserViewController.swift
 //  RoomRadar
 //
-//  Created by AthiPathi on 4/14/23.
+//  Created by AthiPathi on 4/21/23.
 //
 
 import UIKit
 
-class HostProfileViewController: UIViewController {
-    
-    
+class UserViewController: UIViewController {
+
     var user:User?
     @IBOutlet weak var WelcomeLabel: UILabel!
     @IBAction func LogOut(_ sender: UIButton) {
         UserDefaults.standard.removeObject(forKey: "userSession")
-        self.performSegue(withIdentifier: "goToLogin", sender: self)
+        self.performSegue(withIdentifier: "goToLogin1", sender: self)
     }
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +26,7 @@ class HostProfileViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+
 
     /*
     // MARK: - Navigation

@@ -52,10 +52,10 @@ class SignUpViewController: UIViewController {
             let userID = authResult.user.uid
             let db=Firestore.firestore()
             let usersRef = db.collection("users").addDocument(data: ["userID" : userID,"name":fullNameText,"isHost":isHost])
-            if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
-                appDelegate.user?.name = fullNameText
-                appDelegate.user?.userID = userID
-                appDelegate.user?.userName = userNameText
+            let userSession = User(userID: userID, name: fullNameText, userName: userNameText, isHost: isHost)
+            let encoder = JSONEncoder()
+            if let encoded = try? encoder.encode(userSession) {
+                UserDefaults.standard.set(encoded, forKey: "userSession")
             }
             self.clearFields()
             if(isHost){

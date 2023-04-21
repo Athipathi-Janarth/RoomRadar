@@ -60,10 +60,10 @@ class LoginViewController: UIViewController {
                     // Retrieve the name and isHost fields from the user document
                     let name = userData["name"] as? String
                     let isHost = userData["isHost"] as? Bool
-                    if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
-                        appDelegate.user?.name = name ?? ""
-                        appDelegate.user?.userID = userID
-                        appDelegate.user?.userName = userNameText
+                    let userSession = User(userID: userID, name: name ?? "", userName: userNameText, isHost: isHost ?? false)
+                    let encoder = JSONEncoder()
+                    if let encoded = try? encoder.encode(userSession) {
+                        UserDefaults.standard.set(encoded, forKey: "userSession")
                     }
                     host=isHost ?? false
                     if(host){
