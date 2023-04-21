@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,20 +13,27 @@
         <scene sceneID="EHf-IW-A2E">
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                    <view key="view" alpha="0.94999999999999996" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_txt" translatesAutoresizingMaskIntoConstraints="NO" id="olK-TB-gva">
-                                <rect key="frame" x="38" y="209" width="317" height="434"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background-img" translatesAutoresizingMaskIntoConstraints="NO" id="Ism-ui-yAE">
+                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="white-logo" translatesAutoresizingMaskIntoConstraints="NO" id="olK-TB-gva">
+                                <rect key="frame" x="38" y="317.66666666666669" width="317" height="217.00000000000006"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" name="BackgroundColor"/>
+                        <color key="backgroundColor" name="GreenColor"/>
                         <constraints>
                             <constraint firstItem="olK-TB-gva" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="FBd-Cg-0SC"/>
                             <constraint firstItem="olK-TB-gva" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="MIn-GO-OK6"/>
+                            <constraint firstAttribute="trailing" secondItem="Ism-ui-yAE" secondAttribute="trailing" id="Yb9-e5-g6l"/>
+                            <constraint firstAttribute="bottom" secondItem="Ism-ui-yAE" secondAttribute="bottom" id="fkh-jc-qgV"/>
                             <constraint firstItem="olK-TB-gva" firstAttribute="width" secondItem="Ze5-6b-2t3" secondAttribute="width" multiplier="0.806616" id="ny6-5m-B8y"/>
+                            <constraint firstItem="Ism-ui-yAE" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="qzm-af-fLU"/>
+                            <constraint firstItem="Ism-ui-yAE" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="topMargin" constant="-59" id="yZl-1t-Y2m"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -35,9 +43,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="logo_txt" width="2000" height="434"/>
-        <namedColor name="BackgroundColor">
-            <color red="0.92941176470588238" green="0.14901960784313725" blue="0.27843137254901962" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <image name="background-img" width="393" height="852"/>
+        <image name="white-logo" width="1000" height="217"/>
+        <namedColor name="GreenColor">
+            <color red="0.18431372549019609" green="0.5607843137254902" blue="0.32156862745098042" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>
