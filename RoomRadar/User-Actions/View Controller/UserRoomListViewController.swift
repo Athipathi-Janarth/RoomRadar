@@ -41,7 +41,6 @@ class UserRoomListViewController: UIViewController,UITableViewDataSource,UITable
         cell.address.text=roomList.getRooms()[indexPath.row].address
         cell.Vacant.text="\(roomList.getRooms()[indexPath.row].vacant)"
         cell.Rooms.text="\(roomList.getRooms()[indexPath.row].no_of_Rooms)"
-        cell.AccomodationType.text=(roomList.getRooms()[indexPath.row].isTemporary) ? "Temporary" : "Permanent"
         cell.SpotType.text=roomList.getRooms()[indexPath.row].spot
         cell.Rating.text="\(roomList.getRooms()[indexPath.row].rating)"
         cell.StartDates.text="Start: \(roomList.getRooms()[indexPath.row].startDate)"
@@ -116,14 +115,12 @@ class UserRoomListViewController: UIViewController,UITableViewDataSource,UITable
         getRooms()
         tableView.reloadData()
     }
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        performSegue(withIdentifier: "reviews", sender: self)
-//    }
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if let destination =  segue.destination as? ReviewViewController{
-////            destination.accommodation = roomList.getRooms()[tableView.indexPathForSelectedRow?.row ?? 0]
-//        }
-//    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination =  segue.destination as? ReviewViewController{
+            destination.room = roomList.getRooms()[tableView.indexPathForSelectedRow?.row ?? 0]
+        }
+    }
 
     /*
     // MARK: - Navigation
