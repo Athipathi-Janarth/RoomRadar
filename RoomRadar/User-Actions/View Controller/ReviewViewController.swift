@@ -12,6 +12,7 @@ import FirebaseFirestore
 class ReviewViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
     
         var room:RoomDetails?
+        var reviewList:ReviewList?
         var user:User?
         let storageRef = Storage.storage().reference()
         let db = Firestore.firestore()
@@ -50,10 +51,12 @@ class ReviewViewController: UIViewController,UITableViewDataSource,UITableViewDe
                 print("Error adding document: \(error)")
             } else {
                 print("Document added successfully!")
-                //self.clearFields()
-                //self.navigationController?.popViewController(animated: true)
+                self.ReviewScore.text=""
+                self.ReviewComment.text=""
+                self.getReview(accomodationID: self.room?.accomodationID ?? "")
             }
         }
+       
     }
     func showAlert(message: String, title:String = "Error") {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -65,12 +68,16 @@ class ReviewViewController: UIViewController,UITableViewDataSource,UITableViewDe
             super.viewDidLoad()
             tableView.delegate = self
             tableView.dataSource = self
-            tableView.rowHeight = 125.0
+            tableView.rowHeight = 100.0
             let decoder = JSONDecoder()
             if let savedData = UserDefaults.standard.object(forKey: "userSession") as? Data,
                let loadedSession = try? decoder.decode(User.self, from: savedData) {
                 self.user=loadedSession
             }
+        self.getReview(accomodationID: room?.accomodationID ?? "")
+        let imageUrl = URL(string: room?.room_Image ?? "")
+        let placeholderImage = UIImage(named: "launch-screen")
+        RoomImage.kf.setImage(with: imageUrl, placeholder: placeholderImage)
         address.text=room?.address
         Rooms.text="\(room?.no_of_Rooms ?? 0)"
         SpotType.text=room?.spot
@@ -79,21 +86,44 @@ class ReviewViewController: UIViewController,UITableViewDataSource,UITableViewDe
         Rent.text="$\(String(describing: room?.Rent ?? 0))"
             // Do any additional setup after loading the view.
         }
+    func getReview(accomodationID:String) {
+        reviewList = ReviewList()
+        let collectionRef = db.collection("reviews")
+        let query = collectionRef.whereField("accomodationID", isEqualTo: accomodationID)
+        query.getDocuments{(querySnapshot, error) in
+            if let error = error {
+                print("Error retrieving documents: \(error.localizedDescription)")
+                return
+            }
+            
+            guard let documents = querySnapshot?.documents else {
+                print("No documents found.")
+                return
+            }
+            
+            for document in documents {
+                let data = document.data()
+                
+                let review = Review(
+                        Comment: data["Comment"] as? String ?? "",
+                        User: data["User"] as? String ?? "",
+                        accomodationID: data["accomodationID"] as? String ?? "",
+                        rating: data["rating"] as? Float ?? 0
+                    )
+                self.reviewList?.add(review: review)
+            }
+            self.tableView.reloadData()
+        }
+    }
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return 1
+            return reviewList?.getReview().count ?? 0
         }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reviewCell", for: indexPath) as!ReviewViewCell
-//        let imageUrl = URL(string: roomList.getRooms()[indexPath.row].room_Image)
-//        let placeholderImage = UIImage(named: "launch-screen")
-//        cell.RoomImage.kf.setImage(with: imageUrl, placeholder: placeholderImage)
-//        cell.address.text=roomList.getRooms()[indexPath.row].address
-//        cell.Vacant.text="\(roomList.getRooms()[indexPath.row].vacant)"
-//        cell.Rooms.text="\(roomList.getRooms()[indexPath.row].no_of_Rooms)"
-//        cell.AccomodationType.text=(roomList.getRooms()[indexPath.row].isTemporary) ? "Temporary" : "Permanent"
-//        cell.SpotType.text=roomList.getRooms()[indexPath.row].spot
-//        cell.Rating.text="\(roomList.getRooms()[indexPath.row].rating)"
-//        cell.Rent.text="\(String(describing: roomList.getRooms()[indexPath.row].Rent))/Day"
+
+        cell.User.text = self.reviewList?.getReview()[indexPath.row].User
+        cell.Rating.text = "\(self.reviewList?.getReview()[indexPath.row].rating ?? 0)"
+        cell.Comment.text = self.reviewList?.getReview()[indexPath.row].Comment
         return cell
     }
     

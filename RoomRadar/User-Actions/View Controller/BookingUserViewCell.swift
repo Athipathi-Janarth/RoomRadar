@@ -1,22 +1,24 @@
 //
-//  ReviewViewCell.swift
+//  BookingUserViewCell.swift
 //  RoomRadar
 //
-//  Created by AthiPathi on 4/21/23.
+//  Created by AthiPathi on 4/25/23.
 //
 
 import UIKit
 
-class ReviewViewCell: UITableViewCell {
+class BookingUserViewCell: UITableViewCell {
 
-    @IBOutlet weak var Rating: UILabel!
-    @IBOutlet weak var User: UILabel!
-    @IBOutlet weak var Comment: UITextView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
     }
 
+    @IBOutlet weak var Status: UILabel!
+    @IBOutlet weak var HostName: UILabel!
+    @IBOutlet weak var BookingID: UILabel!
+    @IBOutlet weak var RoomImage: UIImageView!
+    @IBOutlet weak var address: UILabel!
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
