@@ -72,6 +72,7 @@ class BookingListViewController: UIViewController,UITableViewDataSource,UITableV
             
             // Parse the query snapshot into an array of Booking objects
             for document in querySnapshot!.documents {
+                let bookingID=document.documentID
                 let data = document.data()
                 let usersRef = db.collection("users")
                 let hostid = data["HostID"] as? String ?? ""
@@ -94,65 +95,64 @@ class BookingListViewController: UIViewController,UITableViewDataSource,UITableV
                         print(hostname)
                         host?.name = userData["name"] as? String ?? ""
                         host?.isHost = userData["isHost"] as? Bool ?? true
+                        let collectionRef = db.collection("rooms").document(data["AccomodationID"] as? String ?? "")
+                        
+                        collectionRef.getDocument { (document, error) in
+                            if let roomdocument = document, ((document?.exists) != nil) {
+                                // Document exists, extract data
+                                let roomdata = roomdocument.data()
+                                
+                                let accommodationID = roomdocument.documentID
+                                let address =  roomdata?["address"] as? String ?? ""
+                                let no_of_Rooms = roomdata?["no_of_Rooms"] as? Int ?? 0
+                                let no_of_Bath = roomdata?["no_of_Bath"] as? Int ?? 0
+                                let preffered_Gender = roomdata?["preffered_Gender"] as? String ?? ""
+                                let Rent = roomdata?["Rent"] as? Float ?? 0.0
+                                let available = roomdata?["available"] as? Bool ?? true
+                                let startDate = (roomdata?["startDate"] as? Timestamp)?.dateValue() ?? Date()
+                                let endDate = (roomdata?["endDate"] as? Timestamp)?.dateValue() ?? Date()
+                                let vacant = roomdata?["vacant"] as? Int ?? 0
+                                let spot = roomdata?["spot"] as? String ?? ""
+                                let description = roomdata?["description"] as? String ?? ""
+                                let room_Image = roomdata?["room_Image"] as? String ?? ""
+                                let rating = roomdata?["rating"] as? Int ?? 0
+                                let isTemporary = roomdata?["type"] as? Bool ?? false
+                                
+                                let room = RoomDetails(accomodationID: accommodationID,
+                                                       userID: "",
+                                                       address: address,
+                                                       no_of_Rooms: no_of_Rooms,
+                                                       no_of_Bath: no_of_Bath,
+                                                       preffered_Gender: preffered_Gender,
+                                                       Rent: Rent,
+                                                       available: available,
+                                                       startDate: startDate,
+                                                       endDate: endDate,
+                                                       vacant: vacant,
+                                                       spot: spot,
+                                                       description: description,
+                                                       room_Image: room_Image,
+                                                       rating: rating,
+                                                       isTemporary: isTemporary)
+                                print(bookingID)
+                                let booking = Booking(
+                                    BookingID:bookingID,
+                                    AccomodationID: data["AccomodationID"] as? String ?? "",
+                                    HostID: data["HostID"] as? String ?? "",
+                                    UserID: data["UserID"] as? String ?? "",
+                                    Status: data["status"] as? String ?? "",
+                                    Room:room,
+                                    Host: host ?? User.init(userID: "", name: hostname, userName: "", isHost: true)
+                                )
+                                self.bookingList.add(booking: booking)
+                                print(self.bookingList.getBookings().count)
+                                self.tableView.reloadData()
+                            }
+                        }
                     }
-                }
-                let collectionRef = db.collection("rooms").document(data["AccomodationID"] as? String ?? "")
-                
-                collectionRef.getDocument { (document, error) in
-                    if let roomdocument = document, ((document?.exists) != nil) {
-                        // Document exists, extract data
-                        let roomdata = roomdocument.data()
-                        
-                        let accommodationID = roomdocument.documentID
-                        let address =  roomdata?["address"] as? String ?? ""
-                        let no_of_Rooms = roomdata?["no_of_Rooms"] as? Int ?? 0
-                        let no_of_Bath = roomdata?["no_of_Bath"] as? Int ?? 0
-                        let preffered_Gender = roomdata?["preffered_Gender"] as? String ?? ""
-                        let Rent = roomdata?["Rent"] as? Float ?? 0.0
-                        let available = roomdata?["available"] as? Bool ?? true
-                        let startDate = (roomdata?["startDate"] as? Timestamp)?.dateValue() ?? Date()
-                        let endDate = (roomdata?["endDate"] as? Timestamp)?.dateValue() ?? Date()
-                        let vacant = roomdata?["vacant"] as? Int ?? 0
-                        let spot = roomdata?["spot"] as? String ?? ""
-                        let description = roomdata?["description"] as? String ?? ""
-                        let room_Image = roomdata?["room_Image"] as? String ?? ""
-                        let rating = roomdata?["rating"] as? Int ?? 0
-                        let isTemporary = roomdata?["type"] as? Bool ?? false
-                        
-                        let room = RoomDetails(accomodationID: accommodationID,
-                                               userID: "",
-                                               address: address,
-                                               no_of_Rooms: no_of_Rooms,
-                                               no_of_Bath: no_of_Bath,
-                                               preffered_Gender: preffered_Gender,
-                                               Rent: Rent,
-                                               available: available,
-                                               startDate: startDate,
-                                               endDate: endDate,
-                                               vacant: vacant,
-                                               spot: spot,
-                                               description: description,
-                                               room_Image: room_Image,
-                                               rating: rating,
-                                               isTemporary: isTemporary)
-                        
-                        
-                        let booking = Booking(
-                            BookingID: document?.documentID ?? "",
-                            AccomodationID: data["AccommodationID"] as? String ?? "",
-                            HostID: data["HostID"] as? String ?? "",
-                            UserID: data["UserID"] as? String ?? "",
-                            Status: data["status"] as? String ?? "",
-                            Room:room,
-                            Host: host ?? User.init(userID: "", name: hostname, userName: "", isHost: true)
-                        )
-                        self.bookingList.add(booking: booking)
-                        print(self.bookingList.getBookings().count)
-                        self.tableView.reloadData()
-                    }
+                    
                 }
             }
-            
         }
     }
     override func viewWillAppear(_ animated: Bool) {

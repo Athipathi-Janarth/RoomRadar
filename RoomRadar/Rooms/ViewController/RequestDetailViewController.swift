@@ -1,14 +1,15 @@
 //
-//  BookingDetailViewController.swift
+//  RequestDetailViewController.swift
 //  RoomRadar
 //
-//  Created by AthiPathi on 4/25/23.
+//  Created by AthiPathi on 4/26/23.
 //
 
 import UIKit
 import Firebase
+import FirebaseStorage
 
-class BookingDetailViewController: UIViewController {
+class RequestDetailViewController: UIViewController {
 
     @IBOutlet weak var RoomImage: UIImageView!
     @IBOutlet weak var address: UILabel!
@@ -22,6 +23,7 @@ class BookingDetailViewController: UIViewController {
     var booking:Booking?
     var room: RoomDetails?
     @IBOutlet weak var CancelButton: UIButton!
+    @IBOutlet weak var ApproveButton: UIButton!
     @IBOutlet weak var BookingID: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +43,7 @@ class BookingDetailViewController: UIViewController {
         
         if(booking?.Status == "Cancelled"){
             self.CancelButton.isEnabled=false
+            self.ApproveButton.isEnabled=false
         }
             
         // Do any additional setup after loading the view.
@@ -65,6 +68,7 @@ class BookingDetailViewController: UIViewController {
                        print("Booking status updated to cancel")
                        self.Status.text = "Cancelled"
                        self.CancelButton.isEnabled=false
+                       self.ApproveButton.isEnabled=false
                    }
                }
         }
@@ -76,8 +80,50 @@ class BookingDetailViewController: UIViewController {
         // Present the alert controller
         present(alertController, animated: true, completion: nil)
     }
+    @IBAction func OnApprove(_ sender: Any) {
+        let alertController = UIAlertController(title: "Do you Want to Approve", message: "Do you Want to Approve this Request?", preferredStyle: .alert)
+        
+        // Create the actions
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
+            // Handle cancel action here
+        }
+        let okAction = UIAlertAction(title: "OK", style: .default) { _ in
+            let db = Firestore.firestore()
+            let bookingRef = db.collection("bookings").document(self.booking?.BookingID ?? "")
+            
+            bookingRef.updateData(["status": "Approved"]) { error in
+                if let error = error {
+                    // An error occurred
+                    print("Error updating booking status: \(error.localizedDescription)")
+                } else {
+                    let roomRef = db.collection("rooms").document(self.booking?.AccomodationID ?? "")
+                    
+                    roomRef.updateData(["available": false]) { error in
+                        if let error = error {
+                            // An error occurred
+                            print("Error updating room availability: \(error.localizedDescription)")
+                        } else {
+                            // Room availability updated successfully
+                            print("Room availability updated to false")
+                        }
+                        // Booking status updated successfully
+                        print("Booking status updated to cancel")
+                        self.Status.text = "Approved"
+                        self.ApproveButton.isEnabled=false
+                    }
+                }
+            }
+        }
+
+        // Add the actions to the alert controller
+        alertController.addAction(cancelAction)
+        alertController.addAction(okAction)
+
+        // Present the alert controller
+        present(alertController, animated: true, completion: nil)
+    }
     
-    
+
 
     /*
     // MARK: - Navigation

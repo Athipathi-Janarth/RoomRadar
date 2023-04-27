@@ -13,7 +13,11 @@ class BookingViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+    @IBOutlet weak var Status: UILabel!
+    @IBOutlet weak var UserName: UILabel!
+    @IBOutlet weak var BookingID: UILabel!
+    @IBOutlet weak var RoomImage: UIImageView!
+    @IBOutlet weak var address: UILabel!
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
