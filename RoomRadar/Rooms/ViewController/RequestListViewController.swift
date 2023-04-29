@@ -91,7 +91,6 @@ class RequestListViewController: UIViewController,UITableViewDataSource,UITableV
                         let userData = userDocument.data()
                         // Retrieve the name and isHost fields from the user document
                         hostname = userData["name"] as? String ?? ""
-                        print(hostname)
                         host?.name = userData["name"] as? String ?? ""
                         host?.isHost = userData["isHost"] as? Bool ?? true
                         let collectionRef = db.collection("rooms").document(data["AccomodationID"] as? String ?? "")

@@ -15,6 +15,9 @@
 		7E32947129FC18DA003EE3FD /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E32947029FC18DA003EE3FD /* FilterViewController.swift */; };
 		7E32947329FC198D003EE3FD /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E32947229FC198D003EE3FD /* UserListViewController.swift */; };
 		7E32947729FC299A003EE3FD /* UserDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E32947629FC299A003EE3FD /* UserDetails.swift */; };
+		7E32947929FC2C46003EE3FD /* UserViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E32947829FC2C46003EE3FD /* UserViewCell.swift */; };
+		7E32947B29FC487D003EE3FD /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E32947A29FC487D003EE3FD /* UserDetailViewController.swift */; };
+		7E32947D29FC6422003EE3FD /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E32947C29FC6422003EE3FD /* Filter.swift */; };
 		7E3735EF29DD272800A11298 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3735EE29DD272800A11298 /* AppDelegate.swift */; };
 		7E3735F129DD272800A11298 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3735F029DD272800A11298 /* SceneDelegate.swift */; };
 		7E3735F329DD272800A11298 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3735F229DD272800A11298 /* ViewController.swift */; };
@@ -59,6 +62,9 @@
 		7E32947029FC18DA003EE3FD /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		7E32947229FC198D003EE3FD /* UserListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewController.swift; sourceTree = "<group>"; };
 		7E32947629FC299A003EE3FD /* UserDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetails.swift; sourceTree = "<group>"; };
+		7E32947829FC2C46003EE3FD /* UserViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewCell.swift; sourceTree = "<group>"; };
+		7E32947A29FC487D003EE3FD /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
+		7E32947C29FC6422003EE3FD /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		7E3735EB29DD272800A11298 /* RoomRadar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoomRadar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E3735EE29DD272800A11298 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7E3735F029DD272800A11298 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -197,6 +203,8 @@
 				7E5CCCFE29F8524000F6D730 /* BookingDetailViewController.swift */,
 				7E32947029FC18DA003EE3FD /* FilterViewController.swift */,
 				7E32947229FC198D003EE3FD /* UserListViewController.swift */,
+				7E32947829FC2C46003EE3FD /* UserViewCell.swift */,
+				7E32947A29FC487D003EE3FD /* UserDetailViewController.swift */,
 			);
 			path = "View Controller";
 			sourceTree = "<group>";
@@ -215,6 +223,7 @@
 			children = (
 				7ED6E42A29E8908600C78881 /* User.swift */,
 				7E32947629FC299A003EE3FD /* UserDetails.swift */,
+				7E32947C29FC6422003EE3FD /* Filter.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -319,13 +328,16 @@
 				7EC6E75C29EF5120002A8C00 /* RequestListViewController.swift in Sources */,
 				7E41336129F2502B005DB183 /* ReviewViewController.swift in Sources */,
 				7E3735F929DD272800A11298 /* RoomRadar.xcdatamodeld in Sources */,
+				7E32947929FC2C46003EE3FD /* UserViewCell.swift in Sources */,
 				7E5CCD0329F8E6AC00F6D730 /* RequestDetailViewController.swift in Sources */,
 				7ED6E42B29E8908600C78881 /* User.swift in Sources */,
 				7E5CCD0129F85CF000F6D730 /* Booking.swift in Sources */,
 				7EC6E75E29EF51A9002A8C00 /* BookingViewCell.swift in Sources */,
 				7E32947329FC198D003EE3FD /* UserListViewController.swift in Sources */,
+				7E32947B29FC487D003EE3FD /* UserDetailViewController.swift in Sources */,
 				7E5CCCFF29F8524000F6D730 /* BookingDetailViewController.swift in Sources */,
 				7E2BB28F29EA13AD006EBB4F /* PostViewCell.swift in Sources */,
+				7E32947D29FC6422003EE3FD /* Filter.swift in Sources */,
 				7E3735EF29DD272800A11298 /* AppDelegate.swift in Sources */,
 				7ED6E43029E8923700C78881 /* LoginViewController.swift in Sources */,
 				7E41335B29F1F8D3005DB183 /* UserRoomListViewController.swift in Sources */,

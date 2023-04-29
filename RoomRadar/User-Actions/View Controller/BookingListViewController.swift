@@ -92,7 +92,6 @@ class BookingListViewController: UIViewController,UITableViewDataSource,UITableV
                         let userData = userDocument.data()
                         // Retrieve the name and isHost fields from the user document
                         hostname = userData["name"] as? String ?? ""
-                        print(hostname)
                         host?.name = userData["name"] as? String ?? ""
                         host?.isHost = userData["isHost"] as? Bool ?? true
                         let collectionRef = db.collection("rooms").document(data["AccomodationID"] as? String ?? "")
@@ -134,7 +133,6 @@ class BookingListViewController: UIViewController,UITableViewDataSource,UITableV
                                                        room_Image: room_Image,
                                                        rating: rating,
                                                        isTemporary: isTemporary)
-                                print(bookingID)
                                 let booking = Booking(
                                     BookingID:bookingID,
                                     AccomodationID: data["AccomodationID"] as? String ?? "",
