@@ -377,6 +377,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="338" id="2hY-v4-5Wl"/>
                                 </constraints>
+                                <color key="sectionIndexBackgroundColor" name="LightGreen"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="reviewCell" rowHeight="121" id="QnS-SV-Egb" customClass="ReviewViewCell" customModule="RoomRadar" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="393" height="121"/>
@@ -395,7 +396,7 @@
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="byE-Wo-C7E">
                                                     <rect key="frame" x="33" y="40" width="340" height="43"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                    <color key="backgroundColor" name="LightGreen"/>
                                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
                                                     <color key="textColor" systemColor="labelColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -414,7 +415,9 @@
                                                     <color key="tintColor" red="0.96731370689999996" green="0.80173798480000003" blue="0.084129271130000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                 </imageView>
                                             </subviews>
+                                            <color key="backgroundColor" name="LightGreen"/>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" name="LightGreen"/>
                                         <connections>
                                             <outlet property="Comment" destination="byE-Wo-C7E" id="us4-SE-ahP"/>
                                             <outlet property="Rating" destination="gFE-b5-nZs" id="R49-in-0QH"/>
@@ -470,6 +473,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add your Review" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gUL-qh-CYV">
                                 <rect key="frame" x="20" y="599" width="185" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" name="LightGreen"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -525,7 +529,7 @@
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ykS-fa-0aV"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="LightGreen"/>
                         <constraints>
                             <constraint firstItem="mun-4q-3Kc" firstAttribute="trailing" secondItem="SiS-ZG-AIQ" secondAttribute="trailing" id="1Xe-jY-Jf4"/>
                             <constraint firstItem="mun-4q-3Kc" firstAttribute="top" secondItem="YHf-5t-lUH" secondAttribute="bottom" constant="27" id="3tB-W2-24s"/>
@@ -842,7 +846,7 @@
                             </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="4B3-2M-9ZW"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="LightGreen"/>
                         <constraints>
                             <constraint firstItem="4B3-2M-9ZW" firstAttribute="bottom" secondItem="i2y-7R-JDw" secondAttribute="bottom" id="0I2-1U-uIH"/>
                             <constraint firstItem="i2y-7R-JDw" firstAttribute="bottom" secondItem="4B3-2M-9ZW" secondAttribute="bottom" id="EHl-DZ-oL1"/>
@@ -1426,7 +1430,7 @@
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="tx6-hJ-0oj"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="LightGreen"/>
                         <constraints>
                             <constraint firstItem="tx6-hJ-0oj" firstAttribute="bottom" secondItem="JpD-Oa-bvD" secondAttribute="bottom" id="YH4-hn-zeD"/>
                             <constraint firstItem="JpD-Oa-bvD" firstAttribute="centerX" secondItem="PZ7-Ob-aBP" secondAttribute="centerX" id="oSt-gm-XuD"/>
@@ -2032,7 +2036,7 @@
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Q6b-4t-vv2"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="LightGreen"/>
                         <constraints>
                             <constraint firstItem="12w-ye-hYZ" firstAttribute="baseline" secondItem="pxC-GE-dSx" secondAttribute="baseline" id="32a-lX-Hax"/>
                             <constraint firstItem="LS8-HS-NsO" firstAttribute="baseline" secondItem="f5n-er-vg1" secondAttribute="baseline" id="4Yn-Z1-CIP"/>
@@ -2370,7 +2374,7 @@
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="wQG-tU-UlA"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="LightGreen"/>
                         <constraints>
                             <constraint firstItem="fm9-oe-iVY" firstAttribute="centerX" secondItem="8ih-nv-Q6i" secondAttribute="centerX" constant="7" id="0N0-wF-pHp"/>
                             <constraint firstItem="svV-Ce-Alr" firstAttribute="leading" secondItem="Rl3-zl-yh9" secondAttribute="leading" id="1Fv-zy-ToJ"/>
@@ -2559,7 +2563,7 @@
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="96N-pM-TA0"/>
-                        <color key="backgroundColor" systemColor="systemGroupedBackgroundColor"/>
+                        <color key="backgroundColor" name="LightGreen"/>
                     </view>
                     <navigationItem key="navigationItem" title="Profile" id="5Sf-52-2or"/>
                     <connections>
@@ -2729,7 +2733,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="e9h-0d-OE6"/>
         <segue reference="QWo-mb-JTK"/>
-        <segue reference="b5D-r9-afF"/>
+        <segue reference="eoL-cf-gxV"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="background-img" width="393" height="852"/>
@@ -2755,6 +2759,9 @@
         <namedColor name="GreenColor">
             <color red="0.0" green="0.56862745098039214" blue="0.29411764705882354" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
+        <namedColor name="LightGreen">
+            <color red="0.88235294117647056" green="0.96862745098039216" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="labelColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
@@ -2763,9 +2770,6 @@
         </systemColor>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemGroupedBackgroundColor">
-            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
