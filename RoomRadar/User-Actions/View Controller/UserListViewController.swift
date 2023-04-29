@@ -7,7 +7,9 @@
 
 import UIKit
 import Firebase
-
+extension Notification.Name {
+    static let filterDidChange = Notification.Name("filterDidChange")
+}
 class UserListViewController: UIViewController, UIViewControllerTransitioningDelegate, UITableViewDelegate, UITableViewDataSource {
     
     
@@ -20,6 +22,7 @@ class UserListViewController: UIViewController, UIViewControllerTransitioningDel
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = 75.0
+        NotificationCenter.default.addObserver(self, selector: #selector(filterDidChange), name: .filterDidChange, object: nil)
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print(userList.count)
@@ -52,7 +55,7 @@ class UserListViewController: UIViewController, UIViewControllerTransitioningDel
                                 print("Error getting user preferences for user \(userID): \(error.localizedDescription)")
                             } else {
                                 let userPreferencesData = snapshot!.data()
-                                let degree = userPreferencesData?["Degree"] as! String
+                                let degree = userPreferencesData?["Degree"] as! String 
                                 let gender = userPreferencesData?["Gender"] as! String
                                 let isVeg = userPreferencesData?["IsVeg"] as! Bool
                                 let knownLanguage = userPreferencesData?["KnownLanguage"] as! String
@@ -176,12 +179,22 @@ class UserListViewController: UIViewController, UIViewControllerTransitioningDel
         
     }
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        self.userList.filter { user in
+        self.userList = self.userList.filter { user in
                 return user.username.contains(searchText)
             }
         self.tableView.reloadData()
     }
-    
+    @objc func filterDidChange() {
+        if(FilterManager.shared.degree == nil) {
+            getUsers()
+        } else {
+            searchUsers()
+        }
+        tableView.reloadData()
+    }
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
     /*
     // MARK: - Navigation
 

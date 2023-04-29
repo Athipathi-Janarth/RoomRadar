@@ -373,11 +373,13 @@
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="SiS-ZG-AIQ">
                                 <rect key="frame" x="0.0" y="302" width="393" height="278"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" name="LightGreen"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="338" id="2hY-v4-5Wl"/>
                                 </constraints>
+                                <color key="separatorColor" name="LightGreen"/>
                                 <color key="sectionIndexBackgroundColor" name="LightGreen"/>
+                                <color key="sectionIndexTrackingBackgroundColor" name="Color"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="reviewCell" rowHeight="121" id="QnS-SV-Egb" customClass="ReviewViewCell" customModule="RoomRadar" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="393" height="121"/>
@@ -418,6 +420,7 @@
                                             <color key="backgroundColor" name="LightGreen"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" name="LightGreen"/>
+                                        <color key="tintColor" name="LightGreen"/>
                                         <connections>
                                             <outlet property="Comment" destination="byE-Wo-C7E" id="us4-SE-ahP"/>
                                             <outlet property="Rating" destination="gFE-b5-nZs" id="R49-in-0QH"/>
