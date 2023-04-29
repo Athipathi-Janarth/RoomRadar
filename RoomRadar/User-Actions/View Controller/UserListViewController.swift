@@ -10,9 +10,9 @@ import Firebase
 extension Notification.Name {
     static let filterDidChange = Notification.Name("filterDidChange")
 }
-class UserListViewController: UIViewController, UIViewControllerTransitioningDelegate, UITableViewDelegate, UITableViewDataSource {
+class UserListViewController: UIViewController, UIViewControllerTransitioningDelegate, UITableViewDelegate, UITableViewDataSource,UISearchBarDelegate {
     
-    
+    var user:User?
     @IBOutlet weak var SearchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     var userList:[UserPreferences] = []
@@ -22,6 +22,12 @@ class UserListViewController: UIViewController, UIViewControllerTransitioningDel
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = 75.0
+        SearchBar.delegate = self
+        let decoder = JSONDecoder()
+        if let savedData = UserDefaults.standard.object(forKey: "userSession") as? Data,
+           let loadedSession = try? decoder.decode(User.self, from: savedData) {
+            self.user=loadedSession
+        }
         NotificationCenter.default.addObserver(self, selector: #selector(filterDidChange), name: .filterDidChange, object: nil)
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -31,7 +37,12 @@ class UserListViewController: UIViewController, UIViewControllerTransitioningDel
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UserCell", for: indexPath) as! UserViewCell
-        cell.UserName.text=userList[indexPath.row].username
+        if userList[indexPath.row].username == user?.name {
+            cell.UserName.text=userList[indexPath.row].username+" (Me)"
+        }
+        else{
+            cell.UserName.text=userList[indexPath.row].username
+        }
         return cell
     }
     func getUsers(){

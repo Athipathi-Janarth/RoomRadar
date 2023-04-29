@@ -7,6 +7,7 @@
 
 import UIKit
 
+
 class FilterViewController: UIViewController {
 
     var filter:Filter?
@@ -25,6 +26,15 @@ class FilterViewController: UIViewController {
                     .medium()
                 ]
             }
+        if(FilterManager.shared.degree != nil) {
+            Ethinicty.text = FilterManager.shared.nationality
+            Spot.text = FilterManager.shared.spot
+            Language.text = FilterManager.shared.knownLanguage
+            Degree.text = FilterManager.shared.degree
+            Gender.text = FilterManager.shared.gender
+            IsMixed.isOn = FilterManager.shared.mixedGenderApt ?? true
+            IsVeg.isOn = FilterManager.shared.isVeg ?? true
+        }
     }
     @IBAction func ApplyFilter(_ sender: UIButton) {
         FilterManager.shared.degree = Degree.text
@@ -36,6 +46,8 @@ class FilterViewController: UIViewController {
         FilterManager.shared.spot = Spot.text
 
         // Dismiss the filter view controller
+        // Post the notification when the filter changes
+        NotificationCenter.default.post(name: Notification.Name("filterDidChange"), object: nil)
         dismiss(animated: true, completion: nil)
     }
     
