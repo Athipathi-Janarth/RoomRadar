@@ -296,7 +296,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="340" id="sS2-FZ-FmM"/>
                                 </constraints>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" smartDashesType="no"/>
                                 <connections>
                                     <outlet property="delegate" destination="uyg-D7-HXf" id="42a-nd-BPo"/>
                                 </connections>
@@ -328,6 +328,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Users" id="04u-Ej-oGf"/>
                     <connections>
+                        <outlet property="SearchBar" destination="8ii-PG-Gw8" id="EUb-hz-WMf"/>
                         <outlet property="tableView" destination="Kdn-Mg-siL" id="ukG-ax-S9a"/>
                     </connections>
                 </viewController>

@@ -9,8 +9,9 @@ import UIKit
 import Firebase
 
 class UserListViewController: UIViewController, UIViewControllerTransitioningDelegate, UITableViewDelegate, UITableViewDataSource {
-  
-
+    
+    
+    @IBOutlet weak var SearchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     var userList:[UserPreferences] = []
     override func viewDidLoad() {
@@ -19,7 +20,7 @@ class UserListViewController: UIViewController, UIViewControllerTransitioningDel
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = 75.0
-        }
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         print(userList.count)
         return userList.count
@@ -73,15 +74,15 @@ class UserListViewController: UIViewController, UIViewControllerTransitioningDel
     }
     @IBAction func showFilters(_ sender: UIButton) {
         guard let filterViewController = storyboard?.instantiateViewController(withIdentifier: "FilterViewController") as? FilterViewController else {
-                return
-            }
+            return
+        }
         let presentationController = UISheetPresentationController(presentedViewController: filterViewController, presenting: self)
-                presentationController.detents = [.medium()]
-                presentationController.prefersScrollingExpandsWhenScrolledToEdge = false
-                presentationController.largestUndimmedDetentIdentifier = .medium
-                
-                // Present the filter view controller
-                present(filterViewController, animated: true, completion: nil)
+        presentationController.detents = [.medium()]
+        presentationController.prefersScrollingExpandsWhenScrolledToEdge = false
+        presentationController.largestUndimmedDetentIdentifier = .medium
+        
+        // Present the filter view controller
+        present(filterViewController, animated: true, completion: nil)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -107,14 +108,14 @@ class UserListViewController: UIViewController, UIViewControllerTransitioningDel
         let db = Firestore.firestore()
         let usersCollection = db.collection("users")
         let userPreferencesCollection = db.collection("userPreferences")
-
+        
         var query = userPreferencesCollection.whereField("IsVeg", isEqualTo: filter.isVeg ?? true)
-
+        
         if let degree = filter.degree  {
             if degree != ""{
                 query = query.whereField("Degree", isEqualTo: degree)
             }
-
+            
         }
         if let gender = filter.gender {
             if gender != ""{
@@ -139,7 +140,7 @@ class UserListViewController: UIViewController, UIViewControllerTransitioningDel
                 query = query.whereField("Spot", isEqualTo: spot)
             }
         }
-
+        
         query.getDocuments() { (querySnapshot, error) in
             if let error = error {
                 print("Error getting users: \(error.localizedDescription)")
@@ -172,9 +173,15 @@ class UserListViewController: UIViewController, UIViewControllerTransitioningDel
                 }
             }
         }
-
+        
     }
-
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        self.userList.filter { user in
+                return user.username.contains(searchText)
+            }
+        self.tableView.reloadData()
+    }
+    
     /*
     // MARK: - Navigation
 
