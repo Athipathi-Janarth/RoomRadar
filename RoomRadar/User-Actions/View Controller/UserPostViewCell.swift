@@ -20,7 +20,6 @@ class UserPostViewCell: UITableViewCell {
     @IBOutlet weak var Vacant: UILabel!
     @IBOutlet weak var Rooms: UILabel!
     @IBOutlet weak var SpotType: UILabel!
-    @IBOutlet weak var AccomodationType: UILabel!
     @IBOutlet weak var Rating: UILabel!
     @IBOutlet weak var Rent: UILabel!
     override func setSelected(_ selected: Bool, animated: Bool) {

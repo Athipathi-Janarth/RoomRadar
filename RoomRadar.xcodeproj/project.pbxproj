@@ -12,6 +12,12 @@
 		7E2BB28F29EA13AD006EBB4F /* PostViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2BB28E29EA13AD006EBB4F /* PostViewCell.swift */; };
 		7E2BB29129EA406D006EBB4F /* HostProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E2BB29029EA406D006EBB4F /* HostProfileViewController.swift */; };
 		7E31368029DDC0D20001870A /* KeyboardLayoutConstraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E31367F29DDC0D20001870A /* KeyboardLayoutConstraint.swift */; };
+		7E32947129FC18DA003EE3FD /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E32947029FC18DA003EE3FD /* FilterViewController.swift */; };
+		7E32947329FC198D003EE3FD /* UserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E32947229FC198D003EE3FD /* UserListViewController.swift */; };
+		7E32947729FC299A003EE3FD /* UserDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E32947629FC299A003EE3FD /* UserDetails.swift */; };
+		7E32947929FC2C46003EE3FD /* UserViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E32947829FC2C46003EE3FD /* UserViewCell.swift */; };
+		7E32947B29FC487D003EE3FD /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E32947A29FC487D003EE3FD /* UserDetailViewController.swift */; };
+		7E32947D29FC6422003EE3FD /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E32947C29FC6422003EE3FD /* Filter.swift */; };
 		7E3735EF29DD272800A11298 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3735EE29DD272800A11298 /* AppDelegate.swift */; };
 		7E3735F129DD272800A11298 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3735F029DD272800A11298 /* SceneDelegate.swift */; };
 		7E3735F329DD272800A11298 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E3735F229DD272800A11298 /* ViewController.swift */; };
@@ -24,6 +30,12 @@
 		7E41335F29F24B16005DB183 /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E41335E29F24B16005DB183 /* UserViewController.swift */; };
 		7E41336129F2502B005DB183 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E41336029F2502B005DB183 /* ReviewViewController.swift */; };
 		7E41336329F2584C005DB183 /* ReviewViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E41336229F2584C005DB183 /* ReviewViewCell.swift */; };
+		7E41336529F46450005DB183 /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E41336429F46450005DB183 /* Review.swift */; };
+		7E5CCCFB29F851FE00F6D730 /* BookingUserViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5CCCFA29F851FE00F6D730 /* BookingUserViewCell.swift */; };
+		7E5CCCFD29F8521600F6D730 /* BookingListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5CCCFC29F8521600F6D730 /* BookingListViewController.swift */; };
+		7E5CCCFF29F8524000F6D730 /* BookingDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5CCCFE29F8524000F6D730 /* BookingDetailViewController.swift */; };
+		7E5CCD0129F85CF000F6D730 /* Booking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5CCD0029F85CF000F6D730 /* Booking.swift */; };
+		7E5CCD0329F8E6AC00F6D730 /* RequestDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E5CCD0229F8E6AC00F6D730 /* RequestDetailViewController.swift */; };
 		7E993AC429DFD7C60063D787 /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7E993AC329DFD7C60063D787 /* IQKeyboardManagerSwift */; };
 		7EC6E75A29EC417E002A8C00 /* UpdateRoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC6E75929EC417E002A8C00 /* UpdateRoomViewController.swift */; };
 		7EC6E75C29EF5120002A8C00 /* RequestListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7EC6E75B29EF5120002A8C00 /* RequestListViewController.swift */; };
@@ -47,6 +59,12 @@
 		7E2BB28E29EA13AD006EBB4F /* PostViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewCell.swift; sourceTree = "<group>"; };
 		7E2BB29029EA406D006EBB4F /* HostProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HostProfileViewController.swift; sourceTree = "<group>"; };
 		7E31367F29DDC0D20001870A /* KeyboardLayoutConstraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardLayoutConstraint.swift; sourceTree = "<group>"; };
+		7E32947029FC18DA003EE3FD /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
+		7E32947229FC198D003EE3FD /* UserListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListViewController.swift; sourceTree = "<group>"; };
+		7E32947629FC299A003EE3FD /* UserDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetails.swift; sourceTree = "<group>"; };
+		7E32947829FC2C46003EE3FD /* UserViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewCell.swift; sourceTree = "<group>"; };
+		7E32947A29FC487D003EE3FD /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
+		7E32947C29FC6422003EE3FD /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		7E3735EB29DD272800A11298 /* RoomRadar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RoomRadar.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7E3735EE29DD272800A11298 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7E3735F029DD272800A11298 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -61,6 +79,12 @@
 		7E41335E29F24B16005DB183 /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		7E41336029F2502B005DB183 /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		7E41336229F2584C005DB183 /* ReviewViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewCell.swift; sourceTree = "<group>"; };
+		7E41336429F46450005DB183 /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
+		7E5CCCFA29F851FE00F6D730 /* BookingUserViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingUserViewCell.swift; sourceTree = "<group>"; };
+		7E5CCCFC29F8521600F6D730 /* BookingListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingListViewController.swift; sourceTree = "<group>"; };
+		7E5CCCFE29F8524000F6D730 /* BookingDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingDetailViewController.swift; sourceTree = "<group>"; };
+		7E5CCD0029F85CF000F6D730 /* Booking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Booking.swift; sourceTree = "<group>"; };
+		7E5CCD0229F8E6AC00F6D730 /* RequestDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestDetailViewController.swift; sourceTree = "<group>"; };
 		7EC6E75929EC417E002A8C00 /* UpdateRoomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateRoomViewController.swift; sourceTree = "<group>"; };
 		7EC6E75B29EF5120002A8C00 /* RequestListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestListViewController.swift; sourceTree = "<group>"; };
 		7EC6E75D29EF51A9002A8C00 /* BookingViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookingViewCell.swift; sourceTree = "<group>"; };
@@ -102,6 +126,8 @@
 			isa = PBXGroup;
 			children = (
 				7E2BB28929E91A19006EBB4F /* RoomDetails.swift */,
+				7E41336429F46450005DB183 /* Review.swift */,
+				7E5CCD0029F85CF000F6D730 /* Booking.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -110,10 +136,12 @@
 			isa = PBXGroup;
 			children = (
 				7E2BB28C29EA133C006EBB4F /* RoomListViewController.swift */,
+				7E2BB28E29EA13AD006EBB4F /* PostViewCell.swift */,
 				7EEA092129EB5ED6000866A6 /* AddRoomViewController.swift */,
 				7EC6E75929EC417E002A8C00 /* UpdateRoomViewController.swift */,
 				7EC6E75B29EF5120002A8C00 /* RequestListViewController.swift */,
 				7EC6E75D29EF51A9002A8C00 /* BookingViewCell.swift */,
+				7E5CCD0229F8E6AC00F6D730 /* RequestDetailViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -142,7 +170,6 @@
 				7ED6E42829E8905500C78881 /* Users */,
 				7ED6E42129E7C57B00C78881 /* GoogleService-Info.plist */,
 				7E31367F29DDC0D20001870A /* KeyboardLayoutConstraint.swift */,
-				7E2BB28E29EA13AD006EBB4F /* PostViewCell.swift */,
 				7E3735EE29DD272800A11298 /* AppDelegate.swift */,
 				7E3735F029DD272800A11298 /* SceneDelegate.swift */,
 				7E3735F229DD272800A11298 /* ViewController.swift */,
@@ -171,6 +198,13 @@
 				7E41335E29F24B16005DB183 /* UserViewController.swift */,
 				7E41336029F2502B005DB183 /* ReviewViewController.swift */,
 				7E41336229F2584C005DB183 /* ReviewViewCell.swift */,
+				7E5CCCFA29F851FE00F6D730 /* BookingUserViewCell.swift */,
+				7E5CCCFC29F8521600F6D730 /* BookingListViewController.swift */,
+				7E5CCCFE29F8524000F6D730 /* BookingDetailViewController.swift */,
+				7E32947029FC18DA003EE3FD /* FilterViewController.swift */,
+				7E32947229FC198D003EE3FD /* UserListViewController.swift */,
+				7E32947829FC2C46003EE3FD /* UserViewCell.swift */,
+				7E32947A29FC487D003EE3FD /* UserDetailViewController.swift */,
 			);
 			path = "View Controller";
 			sourceTree = "<group>";
@@ -188,6 +222,8 @@
 			isa = PBXGroup;
 			children = (
 				7ED6E42A29E8908600C78881 /* User.swift */,
+				7E32947629FC299A003EE3FD /* UserDetails.swift */,
+				7E32947C29FC6422003EE3FD /* Filter.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -292,23 +328,35 @@
 				7EC6E75C29EF5120002A8C00 /* RequestListViewController.swift in Sources */,
 				7E41336129F2502B005DB183 /* ReviewViewController.swift in Sources */,
 				7E3735F929DD272800A11298 /* RoomRadar.xcdatamodeld in Sources */,
+				7E32947929FC2C46003EE3FD /* UserViewCell.swift in Sources */,
+				7E5CCD0329F8E6AC00F6D730 /* RequestDetailViewController.swift in Sources */,
 				7ED6E42B29E8908600C78881 /* User.swift in Sources */,
+				7E5CCD0129F85CF000F6D730 /* Booking.swift in Sources */,
 				7EC6E75E29EF51A9002A8C00 /* BookingViewCell.swift in Sources */,
+				7E32947329FC198D003EE3FD /* UserListViewController.swift in Sources */,
+				7E32947B29FC487D003EE3FD /* UserDetailViewController.swift in Sources */,
+				7E5CCCFF29F8524000F6D730 /* BookingDetailViewController.swift in Sources */,
 				7E2BB28F29EA13AD006EBB4F /* PostViewCell.swift in Sources */,
+				7E32947D29FC6422003EE3FD /* Filter.swift in Sources */,
 				7E3735EF29DD272800A11298 /* AppDelegate.swift in Sources */,
 				7ED6E43029E8923700C78881 /* LoginViewController.swift in Sources */,
 				7E41335B29F1F8D3005DB183 /* UserRoomListViewController.swift in Sources */,
 				7E2BB28A29E91A19006EBB4F /* RoomDetails.swift in Sources */,
+				7E32947129FC18DA003EE3FD /* FilterViewController.swift in Sources */,
 				7ED6E42E29E8921500C78881 /* SignUpViewController.swift in Sources */,
 				7EEA092229EB5ED6000866A6 /* AddRoomViewController.swift in Sources */,
 				7E2BB29129EA406D006EBB4F /* HostProfileViewController.swift in Sources */,
 				7E2BB28D29EA133C006EBB4F /* RoomListViewController.swift in Sources */,
 				7E31368029DDC0D20001870A /* KeyboardLayoutConstraint.swift in Sources */,
 				7E41335D29F1FB23005DB183 /* UserPostViewCell.swift in Sources */,
+				7E41336529F46450005DB183 /* Review.swift in Sources */,
 				7EC6E75A29EC417E002A8C00 /* UpdateRoomViewController.swift in Sources */,
 				7E3735F129DD272800A11298 /* SceneDelegate.swift in Sources */,
 				7E41336329F2584C005DB183 /* ReviewViewCell.swift in Sources */,
+				7E5CCCFB29F851FE00F6D730 /* BookingUserViewCell.swift in Sources */,
+				7E5CCCFD29F8521600F6D730 /* BookingListViewController.swift in Sources */,
 				7E41335F29F24B16005DB183 /* UserViewController.swift in Sources */,
+				7E32947729FC299A003EE3FD /* UserDetails.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

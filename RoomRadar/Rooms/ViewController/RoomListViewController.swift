@@ -26,7 +26,7 @@ class RoomListViewController: UIViewController,UITableViewDataSource,UITableView
            let loadedSession = try? decoder.decode(User.self, from: savedData) {
             self.user=loadedSession
         }
-        getRooms()
+        //getRooms()
         // Do any additional setup after loading the view.
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

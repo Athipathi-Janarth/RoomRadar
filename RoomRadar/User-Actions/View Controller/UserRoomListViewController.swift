@@ -26,9 +26,39 @@ class UserRoomListViewController: UIViewController,UITableViewDataSource,UITable
            let loadedSession = try? decoder.decode(User.self, from: savedData) {
             self.user=loadedSession
         }
-        getRooms()
+        //getRooms()
+        let doubleTapGesture = UITapGestureRecognizer(target: self, action: #selector(handleDoubleTap))
+                doubleTapGesture.numberOfTapsRequired = 2
+                tableView.addGestureRecognizer(doubleTapGesture)
         // Do any additional setup after loading the view.
     }
+    @objc func handleDoubleTap(sender: UITapGestureRecognizer) {
+            if sender.state == .ended {
+                let location = sender.location(in: tableView)
+                if let indexPath = tableView.indexPathForRow(at: location) {
+                    let room = roomList.getRooms()[indexPath.row]
+                    // Show booking alert
+                    let alert = UIAlertController(title: "Booking", message: "Do you want to book this room?", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "Book", style: .default, handler: { action in
+                        var ref: DocumentReference? = nil
+                        ref = self.db.collection("bookings").addDocument(data: [
+                            "AccomodationID": room.accomodationID,
+                            "HostID": room.userID,
+                            "UserID": self.user?.userID,
+                            "status": "Pending"
+                        ]) { err in
+                            if let err = err {
+                                print("Error adding document: \(err)")
+                            } else {
+                                print("Document added with ID: \(ref!.documentID)")
+                            }
+                        }
+                    }))
+                    alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+                    present(alert, animated: true, completion: nil)
+                }
+            }
+        }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return roomList.getRooms().count
     }
@@ -41,7 +71,6 @@ class UserRoomListViewController: UIViewController,UITableViewDataSource,UITable
         cell.address.text=roomList.getRooms()[indexPath.row].address
         cell.Vacant.text="\(roomList.getRooms()[indexPath.row].vacant)"
         cell.Rooms.text="\(roomList.getRooms()[indexPath.row].no_of_Rooms)"
-        cell.AccomodationType.text=(roomList.getRooms()[indexPath.row].isTemporary) ? "Temporary" : "Permanent"
         cell.SpotType.text=roomList.getRooms()[indexPath.row].spot
         cell.Rating.text="\(roomList.getRooms()[indexPath.row].rating)"
         cell.StartDates.text="Start: \(roomList.getRooms()[indexPath.row].startDate)"
@@ -88,9 +117,10 @@ class UserRoomListViewController: UIViewController,UITableViewDataSource,UITable
                 let room_Image = data["room_Image"] as? String ?? ""
                 let rating = data["rating"] as? Int ?? 0
                 let isTemporary = data["type"] as? Bool ?? false
+                let userID = data["userID"] as? String ?? ""
                 
                 let room = RoomDetails(accomodationID: accommodationID,
-                                       userID: "",
+                                       userID: userID,
                                        address: address,
                                        no_of_Rooms: no_of_Rooms,
                                        no_of_Bath: no_of_Bath,
@@ -116,14 +146,12 @@ class UserRoomListViewController: UIViewController,UITableViewDataSource,UITable
         getRooms()
         tableView.reloadData()
     }
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        performSegue(withIdentifier: "reviews", sender: self)
-//    }
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if let destination =  segue.destination as? ReviewViewController{
-////            destination.accommodation = roomList.getRooms()[tableView.indexPathForSelectedRow?.row ?? 0]
-//        }
-//    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let destination =  segue.destination as? ReviewViewController{
+            destination.room = roomList.getRooms()[tableView.indexPathForSelectedRow?.row ?? 0]
+        }
+    }
 
     /*
     // MARK: - Navigation
